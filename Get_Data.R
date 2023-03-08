@@ -52,7 +52,7 @@ data_CPI = data.frame(
 )
 
 data_CPI_raw = data.frame(
-  day = date,
+  day = as.Date(data_raw$date),
   value = data_raw$CPIAUCSL
 )
 
