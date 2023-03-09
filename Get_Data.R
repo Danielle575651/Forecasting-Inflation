@@ -62,7 +62,7 @@ p = ggplot(data_CPI, aes(x=day, y=value)) +
   geom_line() + 
   xlab("") + ylab("Inflation %")
 
-p + scale_x_date(date_breaks = "5 years", date_labels = "%Y")
+p + scale_x_date(date_breaks = "3 years", date_labels = "%Y")
 
 # Time series plot of CPI before any transformations
 # Accumulated inflation therefore an upward trend 
@@ -70,4 +70,4 @@ q = ggplot(data_CPI_raw, aes(x=day, y=value)) +
   geom_line() + 
   xlab("") + ylab("Accumulated inflation")
 
-q + scale_x_date(date_breaks = "5 years", date_labels = "%Y")
+q + scale_x_date(date_breaks = "3 years", date_labels = "%Y")
