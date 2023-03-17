@@ -1,0 +1,88 @@
+! For now: keep track of where your data comes from, which packages are needed and on which papers you base your code 
+! Options: ### Added, ### Fixed, ### Changed, ### Removed
+	- Provide a short description in bullet points
+
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+
+## [1.1.1] - 2023-03-13
+
+### Added
+
+- Get_Data.R to retrieve data
+- Based on paper: Forecasting Inflation in a data-rich environment (therefore install github repository)
+- Requires packages: fbi, ggplot2, dplyr, tidyverse, TTR, install_github("cykbennie/fbi")
+- Inflation plot 
+
+## [1.1.2] - 2023-03-14
+
+### Added
+
+All added R scripts and functions are based on Forecasting Inflation in a data-rich environment
+- Models.R:
+	- runarx
+	- runar
+	- runridge
+	- runadaelasticnet
+	- runrf
+- runridge and runadaelasticnet require packages HDeconometrics and glmnet
+- runrf require package randomForest
+
+- callModels.R:
+	- Calls the models of Models.R
+- getRW.R:
+	- Gets the forecasts of the random walk model
+
+## [1.1.3] - 2023-03-15
+
+## Added
+
+All added R scripts and functions are based on Forecasting Inflation in a data-rich environment
+- Evaluate_forecast.R
+	- Needs libraries:
+		- tidyverse and Metrics
+- Models.R
+	- runsvr
+	- runsvr requires new package: e1071
+	
+## [1.1.4] - 2023-03-16	
+
+## Fixed
+- Evaluate_forecast.R
+
+## Added
+- Models.R
+	- Lags of regressors removed from regression matrix
+	- Max autoregressive term (p) is set to be 12
+		- Everytime the model is estimated (for each t out-of-sample) p is determined	
+	- LLF
+		- Needs libraries: library(grf)
+	- MOTR-BART
+		- Needs libraries: install_github("ebprado/MOTR-BART/MOTRbart")
+					library(MOTRbart)
+
+## [1.1.5] - 2023-03-17
+
+## Added
+- Models.R
+	- ic.getShapleyValues
+		- Requires: library(kernelshap)
+Idea: 
+1) get shapley values per time point t: 1 x 10 vector
+2) Collect all time points together, Shapley matrix: 277 x 10 matrix
+3) Average shapley value: average per column: 1x 10 matrix
+4) Plot Shapley value and input x:
+	- Store Shapley value per input x : 277 x 1 
+	- Store input value : 277 x 1
+	- Combine to plot 	
+
+## Changed
+- Call_models.R
+	- link to Models.R to get shapley values
+- Rolling_window.R
+	- link to Models.R to get shapley values
